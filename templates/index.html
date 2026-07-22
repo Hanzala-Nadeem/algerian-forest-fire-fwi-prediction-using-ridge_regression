@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forest FWI — Fire Weather Index Prediction</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="frame">
+        <header class="nav">
+            <a class="brand" href="{{ url_for('index') }}">
+                <span class="dot"></span> Forest&nbsp;FWI
+            </a>
+            <nav class="nav-links">
+                <a href="{{ url_for('predict_datapoint') }}">Predict</a>
+                <a href="https://github.com/Hanzala-Nadeem/algerian-forest-fire-fwi-prediction-using-ridge_regression" target="_blank" rel="noopener">Source</a>
+            </nav>
+        </header>
+
+        <svg class="circuit" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g stroke="#2dd4a7" stroke-width="1">
+                <circle cx="200" cy="200" r="60" opacity="0.9"/>
+                <circle cx="200" cy="200" r="95" stroke-dasharray="4 6" opacity="0.7"/>
+                <circle cx="200" cy="200" r="135" stroke-dasharray="2 8" opacity="0.5"/>
+                <circle cx="200" cy="200" r="180" opacity="0.35"/>
+                <circle cx="200" cy="200" r="30" opacity="0.9"/>
+            </g>
+            <g stroke="#2dd4a7" stroke-width="1" opacity="0.6">
+                <path d="M200 20 V70 M200 330 V380 M20 200 H70 M330 200 H380"/>
+                <path d="M60 60 L110 110 M340 60 L290 110 M60 340 L110 290 M340 340 L290 290"/>
+            </g>
+            <g fill="#2dd4a7">
+                <circle cx="200" cy="65" r="3"/>
+                <circle cx="335" cy="200" r="3"/>
+                <circle cx="200" cy="335" r="3"/>
+                <circle cx="65" cy="200" r="3"/>
+                <circle cx="295" cy="105" r="2.5" opacity="0.8"/>
+                <circle cx="105" cy="295" r="2.5" opacity="0.8"/>
+            </g>
+            <g stroke="#ff9d2f" stroke-width="1.4" opacity="0.85">
+                <path d="M200 140 L230 170 L200 200 L170 170 Z"/>
+            </g>
+        </svg>
+
+        <main class="hero">
+            <div class="hero-inner">
+                <span class="eyebrow">Machine Learning · Ridge Regression</span>
+                <h1>Read the weather.<br><span class="accent">Predict the fire.</span></h1>
+                <p>
+                    A model trained on the Algerian Forest Fires dataset. Enter nine live
+                    readings and get an instant Fire Weather Index — the standard measure of
+                    how dangerous conditions are for wildfire.
+                </p>
+                <div class="actions">
+                    <a class="btn btn-primary" href="{{ url_for('predict_datapoint') }}">
+                        Predict FWI <span>&rarr;</span>
+                    </a>
+                    <a class="btn btn-ghost" href="https://github.com/Hanzala-Nadeem/algerian-forest-fire-fwi-prediction-using-ridge_regression" target="_blank" rel="noopener">
+                        View the code <span class="arrow">&rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <span>Flask · scikit-learn · Ridge Regression</span>
+            <span>Algerian Forest Fires · Bejaia &amp; Sidi-Bel Abbes</span>
+        </footer>
+    </div>
+</body>
+</html>

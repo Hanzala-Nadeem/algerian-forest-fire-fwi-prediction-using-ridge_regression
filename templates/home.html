@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict — Forest FWI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="frame">
+        <header class="nav">
+            <a class="brand" href="{{ url_for('index') }}">
+                <span class="dot"></span> Forest&nbsp;FWI
+            </a>
+            <nav class="nav-links">
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="https://github.com/Hanzala-Nadeem/algerian-forest-fire-fwi-prediction-using-ridge_regression" target="_blank" rel="noopener">Source</a>
+            </nav>
+        </header>
+
+        <main class="page">
+            <div class="panel">
+                <div class="panel-head">
+                    <h2>Fire Weather Index</h2>
+                    <p>Enter the nine readings below to estimate today's FWI.</p>
+                </div>
+
+                <form action="{{ url_for('predict_datapoint') }}" method="post">
+                    <div class="grid">
+                        <div class="field">
+                            <label for="Temperature">Temperature (°C)</label>
+                            <input type="number" step="any" id="Temperature" name="Temperature" placeholder="29" required>
+                        </div>
+                        <div class="field">
+                            <label for="RH">Relative Humidity (%)</label>
+                            <input type="number" step="any" id="RH" name="RH" placeholder="57" required>
+                        </div>
+                        <div class="field">
+                            <label for="Ws">Wind Speed (km/h)</label>
+                            <input type="number" step="any" id="Ws" name="Ws" placeholder="18" required>
+                        </div>
+                        <div class="field">
+                            <label for="Rain">Rain (mm)</label>
+                            <input type="number" step="any" id="Rain" name="Rain" placeholder="0.0" required>
+                        </div>
+                        <div class="field">
+                            <label for="FFMC">FFMC</label>
+                            <input type="number" step="any" id="FFMC" name="FFMC" placeholder="65.7" required>
+                        </div>
+                        <div class="field">
+                            <label for="DMC">DMC</label>
+                            <input type="number" step="any" id="DMC" name="DMC" placeholder="3.4" required>
+                        </div>
+                        <div class="field">
+                            <label for="ISI">ISI</label>
+                            <input type="number" step="any" id="ISI" name="ISI" placeholder="1.3" required>
+                        </div>
+                        <div class="field">
+                            <label for="Classes">Classes (0 / 1)</label>
+                            <input type="number" step="any" id="Classes" name="Classes" placeholder="0 = not fire, 1 = fire" required>
+                        </div>
+                        <div class="field">
+                            <label for="Region">Region (0 / 1)</label>
+                            <input type="number" step="any" id="Region" name="Region" placeholder="0 = Bejaia, 1 = Sidi-Bel" required>
+                        </div>
+                    </div>
+
+                    <div class="submit-row">
+                        <button type="submit" class="btn btn-primary">Predict FWI</button>
+                    </div>
+                </form>
+
+                {% if error %}
+                    <div class="alert">{{ error }}</div>
+                {% endif %}
+
+                {% if results is defined and results is not none %}
+                    {% if results < 5 %}
+                        {% set band = 'Low' %}{% set band_class = 'low' %}
+                    {% elif results < 15 %}
+                        {% set band = 'Moderate' %}{% set band_class = 'moderate' %}
+                    {% elif results < 25 %}
+                        {% set band = 'High' %}{% set band_class = 'high' %}
+                    {% else %}
+                        {% set band = 'Extreme' %}{% set band_class = 'extreme' %}
+                    {% endif %}
+                    <div class="result">
+                        <div>
+                            <div class="label">Predicted Fire Weather Index</div>
+                            <div class="value">{{ results }}</div>
+                        </div>
+                        <span class="badge {{ band_class }}">{{ band }} danger</span>
+                    </div>
+                {% endif %}
+            </div>
+        </main>
+
+        <footer class="footer">
+            <span>Flask · scikit-learn · Ridge Regression</span>
+            <a href="{{ url_for('index') }}">&larr; Back to home</a>
+        </footer>
+    </div>
+</body>
+</html>
