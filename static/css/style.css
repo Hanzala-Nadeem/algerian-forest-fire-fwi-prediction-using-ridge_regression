@@ -261,7 +261,7 @@ body {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 18px;
 }
 
@@ -269,6 +269,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    min-width: 0;
 }
 
 .field label {
@@ -280,6 +281,7 @@ body {
 }
 
 .field input {
+    width: 100%;
     background: var(--bg-soft);
     border: 1px solid var(--line-strong);
     border-radius: 10px;
@@ -384,7 +386,7 @@ body {
 
 @media (max-width: 860px) {
     .grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     .circuit {
         opacity: 0.28;

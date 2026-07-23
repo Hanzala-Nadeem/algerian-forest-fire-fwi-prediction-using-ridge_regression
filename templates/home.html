@@ -32,39 +32,39 @@
                     <div class="grid">
                         <div class="field">
                             <label for="Temperature">Temperature (°C)</label>
-                            <input type="number" step="any" id="Temperature" name="Temperature" placeholder="29" required>
+                            <input type="number" step="any" id="Temperature" name="Temperature" value="{{ request.form.get('Temperature', '') }}" placeholder="29" required>
                         </div>
                         <div class="field">
                             <label for="RH">Relative Humidity (%)</label>
-                            <input type="number" step="any" id="RH" name="RH" placeholder="57" required>
+                            <input type="number" step="any" id="RH" name="RH" value="{{ request.form.get('RH', '') }}" placeholder="57" required>
                         </div>
                         <div class="field">
                             <label for="Ws">Wind Speed (km/h)</label>
-                            <input type="number" step="any" id="Ws" name="Ws" placeholder="18" required>
+                            <input type="number" step="any" id="Ws" name="Ws" value="{{ request.form.get('Ws', '') }}" placeholder="18" required>
                         </div>
                         <div class="field">
                             <label for="Rain">Rain (mm)</label>
-                            <input type="number" step="any" id="Rain" name="Rain" placeholder="0.0" required>
+                            <input type="number" step="any" id="Rain" name="Rain" value="{{ request.form.get('Rain', '') }}" placeholder="0.0" required>
                         </div>
                         <div class="field">
                             <label for="FFMC">FFMC</label>
-                            <input type="number" step="any" id="FFMC" name="FFMC" placeholder="65.7" required>
+                            <input type="number" step="any" id="FFMC" name="FFMC" value="{{ request.form.get('FFMC', '') }}" placeholder="65.7" required>
                         </div>
                         <div class="field">
                             <label for="DMC">DMC</label>
-                            <input type="number" step="any" id="DMC" name="DMC" placeholder="3.4" required>
+                            <input type="number" step="any" id="DMC" name="DMC" value="{{ request.form.get('DMC', '') }}" placeholder="3.4" required>
                         </div>
                         <div class="field">
                             <label for="ISI">ISI</label>
-                            <input type="number" step="any" id="ISI" name="ISI" placeholder="1.3" required>
+                            <input type="number" step="any" id="ISI" name="ISI" value="{{ request.form.get('ISI', '') }}" placeholder="1.3" required>
                         </div>
                         <div class="field">
                             <label for="Classes">Classes (0 / 1)</label>
-                            <input type="number" step="any" id="Classes" name="Classes" placeholder="0 = not fire, 1 = fire" required>
+                            <input type="number" step="any" id="Classes" name="Classes" value="{{ request.form.get('Classes', '') }}" placeholder="0 = not fire, 1 = fire" required>
                         </div>
                         <div class="field">
                             <label for="Region">Region (0 / 1)</label>
-                            <input type="number" step="any" id="Region" name="Region" placeholder="0 = Bejaia, 1 = Sidi-Bel" required>
+                            <input type="number" step="any" id="Region" name="Region" value="{{ request.form.get('Region', '') }}" placeholder="0 = Bejaia, 1 = Sidi-Bel" required>
                         </div>
                     </div>
 
